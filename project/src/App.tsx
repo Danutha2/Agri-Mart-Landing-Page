@@ -19,7 +19,7 @@ function App() {
           {/* Modern and Larger Logo */}
           <div className="mb-8">
             <img 
-              src="src/img/logo.jpg" // Replace with your logo path
+              src="public/img/logo.jpg" // Replace with your logo path
               alt="Agri Mart Logo"
               className="h-24 md:h-32 mx-auto" // Larger logo with responsive size
             />
@@ -44,7 +44,7 @@ function App() {
           </h2>
           {/* Mobile App Image */}
           <img 
-            src="src/img/view.jpg" // Replace with your mobile app graphical image path
+            src="public/img/view.jpg" // Replace with your mobile app graphical image path
             alt="Agri Mart App"
             className="mx-auto max-w-xs md:max-w-md"
           />
