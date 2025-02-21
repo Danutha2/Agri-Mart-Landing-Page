@@ -634,3 +634,39 @@ footer.bg-gray-900 .border-t {
 .modern-button {
   padding: 1rem 2rem;
   border-radius: 50 };
+
+
+/* Additional styles for the What is Agri Mart section */
+.bg-green-50 {
+    background-color: #f0fdf4;
+  }
+  
+  .text-green-700 {
+    color: #166534;
+  }
+  
+  /* Smooth hover transition for the cards */
+  .bg-green-50:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Animation for the icon */
+  @keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  .inline-flex img {
+    animation: gentle-bounce 3s ease-in-out infinite;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-inline-size: 768px) {
+    .grid.md\:grid-cols-2 {
+      grid-template-columns: 1fr;
+    }
+    
+    .bg-green-50 {
+      margin-block-end: 1.5rem;
+    }
+  }

@@ -12,7 +12,13 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
+
+
+
 function App() {
+
+
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
@@ -75,6 +81,67 @@ function App() {
           />
         </div>
       </section>
+
+      {/* What is Agri Mart Section */}
+      {/* <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+            What is Agri Mart?
+          </h2>
+          <div className="agri-mart-card bg-white p-8 rounded-xl shadow-lg mx-auto max-w-4xl">
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Agri Mart is an innovative online platform designed to bridge the gap between farmers and buyers. By providing real-time market data, fair pricing, and direct communication, Agri Mart ensures that farmers can connect with reliable buyers across regions, maximizing profits and minimizing food waste.
+            </p>
+            <p className="text-xl text-gray-600 mt-6 leading-relaxed">
+              With features like a user-friendly marketplace, multilingual support, and negotiation tools, Agri Mart empowers farmers to make informed decisions and build lasting partnerships, creating a more efficient and sustainable agricultural supply chain.
+            </p>
+          </div>
+        </div>
+      </section> */}
+
+      {/* What is Agri Mart Section */}
+<section className="py-20 bg-white">
+  <div className="container mx-auto px-6">
+    <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+      What is Agri Mart?
+    </h2>
+    <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+      <div className="bg-green-50 p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
+        <h3 className="text-2xl font-semibold mb-4 text-green-700">Connect & Trade</h3>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          Agri Mart is an innovative online platform designed to bridge the gap between farmers and buyers. By providing real-time market data, fair pricing, and direct communication, Agri Mart ensures that farmers can connect with reliable buyers across regions, maximizing profits and minimizing food waste.
+        </p>
+      </div>
+      <div className="bg-green-50 p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
+        <h3 className="text-2xl font-semibold mb-4 text-green-700">Empower & Sustain</h3>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          With features like a user-friendly marketplace, multilingual support, and negotiation tools, Agri Mart empowers farmers to make informed decisions and build lasting partnerships, creating a more efficient and sustainable agricultural supply chain.
+        </p>
+      </div>
+    </div>
+    
+    {/* Additional visual element */}
+    <div className="mt-16 text-center">
+      <div className="inline-flex items-center justify-center p-4 bg-green-100 rounded-full mb-6">
+        <img 
+          src="/img/leaf-icon.png" 
+          alt="Sustainability" 
+          className="w-12 h-12"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23166534' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 22 12 2l10 20-10-6-10 6Z'/%3E%3C/svg%3E";
+          }}
+        />
+      </div>
+      <p className="text-xl text-green-700 font-medium max-w-2xl mx-auto">
+        Join thousands of farmers and buyers who are already transforming their agricultural businesses with Agri Mart.
+      </p>
+    </div>
+  </div>
+</section>
+
+    
+
 
       {/* Features Section */}
       <section className="py-20 bg-gray-50">
@@ -172,17 +239,10 @@ function App() {
                     href="#"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
-                    About
+                    Meet Us
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Features
-                  </a>
-                </li>
+
                 <li>
                   <a
                     href="mailto:agrimart44@gmail.com?subject=Contact%20from%20Agri%20Mart&body=Hello%20Agri%20Mart,%20I%20would%20like%20to%20get%20in%20touch."
