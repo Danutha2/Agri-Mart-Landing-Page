@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Download,
   Users,
@@ -9,32 +9,118 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Mail,
+  Twitter,
+  Globe,
+  Menu,
+  X,
+  Home,
+  ShoppingBag,
+  Info,
+  Phone
 } from "lucide-react";
 import "./styles.css";
 
-
-
-
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header Section */}
-      <header className="header-container bg-green-700 text-white">
-        {/* Main Header */}
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo Section (aligned to the left) */}
-          <div className="flex items-center space-x-4 ml-0">
-            <img
-              src="/img/logo.jpg"
-              alt="Agri Mart Logo"
-              className="logo-img h-24 w-24 rounded-lg object-cover"
-            />
-          </div>
+      {/* Navigation Bar */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white text-gray-800 shadow-md py-2' : 'bg-transparent text-white py-4'}`}>
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between">
+            {/* Logo Section (aligned to the left) */}
+            <div className="flex items-center space-x-4 ml-0">
+              <img
+                src="/omg/logo.jpg"
+                alt="Agri Mart Logo"
+                className="logo-img h-24 w-24 rounded-lg object-cover"
+              />
+              <span className={`font-bold text-xl ${isScrolled ? 'text-green-700' : 'text-white'}`}></span>
+            </div>
 
-          {/* "Agri Mart" Text centered */}
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#home" className={`nav-link ${isScrolled ? 'text-gray-700 hover:text-green-700' : 'text-white hover:text-green-200'} text-2xl px-12 py-2`}>Home</a>
+              <a href="#about" className={`nav-link ${isScrolled ? 'text-gray-700 hover:text-green-700' : 'text-white hover:text-green-200'} text-2xl px-4 py-2`}>About</a>
+              <a href="#features" className={`nav-link ${isScrolled ? 'text-gray-700 hover:text-green-700' : 'text-white hover:text-green-200'} text-2xl px-4 py-2`}>Features</a>
+              <a href="#team" className={`nav-link ${isScrolled ? 'text-gray-700 hover:text-green-700' : 'text-white hover:text-green-200'} text-2xl px-4 py-2`}>Team</a>
+              <a href="#contact" className={`nav-link ${isScrolled ? 'text-gray-700 hover:text-green-700' : 'text-white hover:text-green-200'} text-2xl px-4 py-2`}>Contact</a>
+            </div>
+
+            {/* CTA Button */}
+            <div className="hidden md:block">
+              <button className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">
+                Get Started
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button 
+                onClick={toggleMobileMenu}
+                className={`p-2 rounded-lg ${isScrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-screen opacity-100 visible' : 'max-h-0 opacity-0 invisible'} overflow-hidden`}>
+          <div className="bg-white shadow-lg px-6 py-4 space-y-4">
+            <a href="#home" className="flex items-center space-x-2 text-gray-800 hover:text-green-700 py-2 border-b border-gray-100">
+              <Home size={18} />
+              <span>Home</span>
+            </a>
+            <a href="#about" className="flex items-center space-x-2 text-gray-800 hover:text-green-700 py-2 border-b border-gray-100">
+              <Info size={18} />
+              <span>About</span>
+            </a>
+            <a href="#features" className="flex items-center space-x-2 text-gray-800 hover:text-green-700 py-2 border-b border-gray-100">
+              <ShoppingBag size={18} />
+              <span>Features</span>
+            </a>
+            <a href="#team" className="flex items-center space-x-2 text-gray-800 hover:text-green-700 py-2 border-b border-gray-100">
+              <Users size={18} />
+              <span>Team</span>
+            </a>
+            <a href="#contact" className="flex items-center space-x-2 text-gray-800 hover:text-green-700 py-2 border-b border-gray-100">
+              <Phone size={18} />
+              <span>Contact</span>
+            </a>
+            <button className="w-full bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">
+              Get Started
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Header Section */}
+      <header id="home" className="header-container bg-green-700 text-white pt-20">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex-grow text-center">
             <h1 className="header-title text-4xl font-extrabold tracking-tight text-white">
               Agri Mart
@@ -69,13 +155,13 @@ function App() {
       </section>
 
       {/* App Graphical Image Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="about" className="py-20 bg-gray-50">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
             Check out the Agri Mart App
           </h2>
           <img
-            src="/img/view.jpg" // Replace with your mobile app graphical image path
+            src="/omg/view.jpg"
             alt="Agri Mart App"
             className="mx-auto max-w-xs md:max-w-md"
           />
@@ -83,68 +169,61 @@ function App() {
       </section>
 
       {/* What is Agri Mart Section */}
-      {/* <section className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
             What is Agri Mart?
           </h2>
-          <div className="agri-mart-card bg-white p-8 rounded-xl shadow-lg mx-auto max-w-4xl">
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Agri Mart is an innovative online platform designed to bridge the gap between farmers and buyers. By providing real-time market data, fair pricing, and direct communication, Agri Mart ensures that farmers can connect with reliable buyers across regions, maximizing profits and minimizing food waste.
-            </p>
-            <p className="text-xl text-gray-600 mt-6 leading-relaxed">
-              With features like a user-friendly marketplace, multilingual support, and negotiation tools, Agri Mart empowers farmers to make informed decisions and build lasting partnerships, creating a more efficient and sustainable agricultural supply chain.
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="bg-green-50 p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
+              <h3 className="text-2xl font-semibold mb-4 text-green-700">
+                Connect & Trade
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Agri Mart is an innovative online platform designed to bridge
+                the gap between farmers and buyers. By providing real-time
+                market data, fair pricing, and direct communication, Agri Mart
+                ensures that farmers can connect with reliable buyers across
+                regions, maximizing profits and minimizing food waste.
+              </p>
+            </div>
+            <div className="bg-green-50 p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg ml-20">
+              <h3 className="text-2xl font-semibold mb-4 text-green-700">
+                Empower & Sustain
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                With features like a user-friendly marketplace, multilingual
+                support, and negotiation tools, Agri Mart empowers farmers to
+                make informed decisions and build lasting partnerships, creating
+                a more efficient and sustainable agricultural supply chain.
+              </p>
+            </div>
+          </div>
+
+          {/* Additional visual element */}
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center justify-center p-4 bg-green-100 rounded-full mb-6">
+              <img
+                src="/img/leaf-icon.png"
+                alt="Sustainability"
+                className="w-12 h-12"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23166534' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 22 12 2l10 20-10-6-10 6Z'/%3E%3C/svg%3E";
+                }}
+              />
+            </div>
+            <p className="text-xl text-green-700 font-medium max-w-2xl mx-auto">
+              Join thousands of farmers and buyers who are already transforming
+              their agricultural businesses with Agri Mart.
             </p>
           </div>
         </div>
-      </section> */}
-
-      {/* What is Agri Mart Section */}
-<section className="py-20 bg-white">
-  <div className="container mx-auto px-6">
-    <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
-      What is Agri Mart?
-    </h2>
-    <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-      <div className="bg-green-50 p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
-        <h3 className="text-2xl font-semibold mb-4 text-green-700">Connect & Trade</h3>
-        <p className="text-lg text-gray-700 leading-relaxed">
-          Agri Mart is an innovative online platform designed to bridge the gap between farmers and buyers. By providing real-time market data, fair pricing, and direct communication, Agri Mart ensures that farmers can connect with reliable buyers across regions, maximizing profits and minimizing food waste.
-        </p>
-      </div>
-      <div className="bg-green-50 p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
-        <h3 className="text-2xl font-semibold mb-4 text-green-700">Empower & Sustain</h3>
-        <p className="text-lg text-gray-700 leading-relaxed">
-          With features like a user-friendly marketplace, multilingual support, and negotiation tools, Agri Mart empowers farmers to make informed decisions and build lasting partnerships, creating a more efficient and sustainable agricultural supply chain.
-        </p>
-      </div>
-    </div>
-    
-    {/* Additional visual element */}
-    <div className="mt-16 text-center">
-      <div className="inline-flex items-center justify-center p-4 bg-green-100 rounded-full mb-6">
-        <img 
-          src="/img/leaf-icon.png" 
-          alt="Sustainability" 
-          className="w-12 h-12"
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23166534' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 22 12 2l10 20-10-6-10 6Z'/%3E%3C/svg%3E";
-          }}
-        />
-      </div>
-      <p className="text-xl text-green-700 font-medium max-w-2xl mx-auto">
-        Join thousands of farmers and buyers who are already transforming their agricultural businesses with Agri Mart.
-      </p>
-    </div>
-  </div>
-</section>
-
-    
-
+      </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="features" className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
             Features that Empower You
@@ -205,6 +284,96 @@ function App() {
         </div>
       </section>
 
+      {/* Meet Our Team Section */}
+      <section id="team" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">Meet Our Team</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our passionate team of experts is dedicated to revolutionizing agricultural commerce and creating sustainable solutions for farmers and buyers.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <TeamMember
+              name="Gokula Nandhan"
+              role="Chief Executive Officer"
+              image="/omg/cv.jpg"
+              bio="Gokul leads our vision to transform agricultural commerce locally."
+              socialLinks={[
+                { icon: <Twitter size={18} />, url: "#" },
+                { icon: <Linkedin size={18} />, url: "#" },
+                { icon: <Mail size={18} />, url: "mailto:john@agrimart.com" }
+              ]}
+            />
+            
+            <TeamMember
+              name="Chamuditha Weeramantri"
+              role="Chief Technology Officer"
+              image="/omg/ck.jpg"
+              bio="Chamuditha brings extensive experience in developing scalable platforms that connect agricultural communities."
+              socialLinks={[
+                { icon: <Twitter size={18} />, url: "#" },
+                { icon: <Linkedin size={18} />, url: "#" },
+                { icon: <Globe size={18} />, url: "#" }
+              ]}
+            />
+            
+            <TeamMember
+              name="Rukshan Kuruppu"
+              role="Chief Operations Officer"
+              image="/omg/new2.jpg"
+              bio="Rukshan oversees our day-to-day operations, ensuring seamless experiences for all platform users."
+              socialLinks={[
+                { icon: <Linkedin size={18} />, url: "#" },
+                { icon: <Mail size={18} />, url: "mailto:michael@agrimart.com" }
+              ]}
+            />
+            
+            <TeamMember
+              name="Shashini Perera"
+              role="Chief Financial Officer"
+              image="/omg/zz.jpg"
+              bio="Shashini manages our financial strategy, focusing on sustainable growth and investor relations."
+              socialLinks={[
+                { icon: <Linkedin size={18} />, url: "#" },
+                { icon: <Mail size={18} />, url: "mailto:emily@agrimart.com" }
+              ]}
+            />
+            
+            <TeamMember
+              name="Sahan Rashmika"
+              role="Head of Farmer Relations"
+              image="/omg/WhatsApp Image 2025-03-03 at 17.51.44_68d48cbb.jpg"
+              bio="Sahan works directly with farming communities to understand their needs and improve our platform."
+              socialLinks={[
+                { icon: <Twitter size={18} />, url: "#" },
+                { icon: <Linkedin size={18} />, url: "#" },
+                { icon: <Mail size={18} />, url: "mailto:sarah@agrimart.com" }
+              ]}
+            />
+            
+            <TeamMember
+              name="Danutha Embulpitiya"
+              role="Head of Market Research"
+              image="/omg/dan.jpg"
+              bio="Danutha analyzes agricultural market trends to provide valuable insights to our users."
+              socialLinks={[
+                { icon: <Linkedin size={18} />, url: "#" },
+                { icon: <Globe size={18} />, url: "#" },
+                { icon: <Mail size={18} />, url: "mailto:david@agrimart.com" }
+              ]}
+            />
+          </div>
+          
+          <div className="text-center mt-16">
+            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg text-lg font-medium inline-flex items-center gap-2 transition-colors">
+              Join Our Team <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-green-600 text-white">
         <div className="container mx-auto px-6 text-center">
@@ -222,7 +391,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer id="contact" className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
@@ -322,6 +491,45 @@ const StepCard = ({ number, title, description }) => (
     </div>
     <h3 className="text-xl font-semibold mb-4">{title}</h3>
     <p className="text-gray-600">{description}</p>
+  </div>
+);
+
+// TeamMember Component
+const TeamMember = ({ name, role, image, bio, socialLinks }) => (
+  <div className="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300">
+    <div className="relative h-80 overflow-hidden">
+      <img 
+        src={image} 
+        alt={`${name} - ${role}`} 
+        className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110" 
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60";
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+        <div className="p-6 w-full">
+          <div className="flex justify-center space-x-3 mb-2">
+            {socialLinks && socialLinks.map((link, index) => (
+              <a 
+                key={index} 
+                href={link.url} 
+                className="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-green-600 transition-colors duration-300"
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-bold text-gray-800">{name}</h3>
+      <p className="text-green-600 font-medium mb-3">{role}</p>
+      <p className="text-gray-600 text-sm leading-relaxed">{bio}</p>
+    </div>
   </div>
 );
 

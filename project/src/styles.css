@@ -1,108 +1,54 @@
-/* Tailwind's Base, Components, and Utilities Directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Modern CSS Variables for Agriculture Theme */
-:root {
-  --primary-green: #38a169;
-  --dark-green: #2f855a;
-  --light-green: #c6f6d5;
-  --soil-brown: #8B5A2B;
-  --wheat-gold: #F5DEB3;
-  --sky-blue: #4299e1;
-  --cloud-white: #f7fafc;
-}
-
-/* Global Styles */
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  scroll-behavior: smooth;
-}
-
-/* Enhanced Header with Natural Gradient */
+/* Header styles */
 .header-container {
-  background: linear-gradient(135deg, var(--dark-green), #1d4e2a);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
-  position: sticky;
-  inset-block-start: 0;
-  z-index: 50;
-  transition: all 0.3s ease;
-}
-
-.logo-img {
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  max-block-size: 60px;
-  object-fit: cover;
-}
-
-.logo-img:hover {
-  transform: scale(1.1) rotate(2deg);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .header-title {
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 2px;
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: var(--cloud-white);
-  text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-img {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Navigation styles */
+.nav-link {
+  position: relative;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
-.header-title:hover {
-  color: var(--wheat-gold);
-  letter-spacing: 2.5px;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
 }
 
-/* Hero Section Enhancement */
-section.relative.h-screen {
-  overflow: hidden;
+.nav-link:hover::after {
+  width: 100%;
 }
 
-section.relative.h-screen img {
-  transform: scale(1.03);
-  transition: transform 15s ease;
-  animation: subtle-zoom 25s infinite alternate;
+/* Feature card hover effects */
+.icon {
+  transition: transform 0.3s ease;
 }
 
-@keyframes subtle-zoom {
-  0% { transform: scale(1.03); }
-  100% { transform: scale(1.1); }
+.bg-white:hover .icon {
+  transform: translateY(-5px);
 }
 
-section.relative.h-screen .bg-opacity-50 {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+/* Team member hover effects */
+.team-member-card:hover .team-member-overlay {
+  opacity: 1;
 }
 
-section.relative.h-screen h1 {
-  font-weight: 900;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  animation: fade-in-up 1s ease-out;
-}
-
-section.relative.h-screen p {
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  animation: fade-in-up 1s ease-out 0.2s backwards;
-}
-
-section.relative.h-screen button {
-  animation: fade-in-up 1s ease-out 0.4s backwards;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-section.relative.h-screen button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-@keyframes fade-in-up {
+/* Custom animations */
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -113,560 +59,21 @@ section.relative.h-screen button:hover {
   }
 }
 
-/* App Graphical Image Section */
-section.py-20.bg-gray-50 {
-  background-color: #f9fafb;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2338a169' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-  position: relative;
-  overflow: hidden;
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-section.py-20.bg-gray-50::before {
-  content: "";
-  position: absolute;
-  inset-block-start: -50px;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
-  block-size: 100px;
-  background: linear-gradient(to bottom, transparent, #f9fafb);
-  z-index: 1;
-}
-
-section.py-20.bg-gray-50 h2 {
-  position: relative;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: var(--dark-green);
-  margin-block-end: 3rem;
-  display: inline-block;
-}
-
-section.py-20.bg-gray-50 h2::after {
-  content: "";
-  position: absolute;
-  inset-block-end: -15px;
-  inset-inline-start: 50%;
-  transform: translateX(-50%);
-  inline-size: 80px;
-  block-size: 4px;
-  background: var(--primary-green);
-  border-radius: 2px;
-}
-
-section.py-20.bg-gray-50 img {
-  max-inline-size: 100%;
-  block-size: auto;
-  margin-block-start: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-section.py-20.bg-gray-50 img:hover {
-  transform: scale(1.05) translateY(-10px) rotate(1deg);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.07);
-}
-
-/* Features Section */
-.bg-gray-50 .grid .bg-white {
-  background: linear-gradient(135deg, white, #f8f9fa);
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  position: relative;
-}
-
-.bg-gray-50 .grid .bg-white::before {
-  content: "";
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
-  block-size: 6px;
-  background: linear-gradient(90deg, var(--primary-green), var(--dark-green));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-
-.bg-gray-50 .grid .bg-white:hover::before {
-  transform: scaleX(1);
-}
-
-.bg-gray-50 .grid .bg-white:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.bg-gray-50 .grid .bg-white .icon {
-  background-color: rgba(56, 161, 105, 0.1);
-  border-radius: 12px;
-  inline-size: 64px;
-  block-size: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-block-end: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.bg-gray-50 .grid .bg-white:hover .icon {
-  background-color: rgba(56, 161, 105, 0.2);
-  transform: scale(1.1);
-}
-
-.bg-gray-50 .grid .bg-white h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2d3748;
-  margin-block-end: 1rem;
-  transition: color 0.3s ease;
-}
-
-.bg-gray-50 .grid .bg-white:hover h3 {
-  color: var(--primary-green);
-}
-
-.bg-gray-50 .grid .bg-white p {
-  font-size: 1rem;
-  color: #4a5568;
-  line-height: 1.7;
-}
-
-/* How It Works Section */
-section.py-20.bg-white {
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338a169' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  position: relative;
-}
-
-section.py-20.bg-white .container {
-  max-inline-size: 1280px;
-}
-
-section.py-20.bg-white h2 {
-  position: relative;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: var(--dark-green);
-  margin-block-end: 3rem;
-  display: inline-block;
-}
-
-section.py-20.bg-white h2::after {
-  content: "";
-  position: absolute;
-  inset-block-end: -15px;
-  inset-inline-start: 50%;
-  transform: translateX(-50%);
-  inline-size: 80px;
-  block-size: 4px;
-  background: var(--primary-green);
-  border-radius: 2px;
-}
-
-section.py-20.bg-white .grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-}
-
-section.py-20.bg-white .grid > div {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  position: relative;
-}
-
-section.py-20.bg-white .grid > div::after {
-  content: "";
-  position: absolute;
-  inline-size: 200px;
-  block-size: 200px;
-  background: radial-gradient(circle, rgba(56, 161, 105, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-  inset-block-end: -100px;
-  inset-inline-end: -100px;
-  border-radius: 50%;
-  z-index: -1;
-  transition: all 0.6s ease;
-}
-
-section.py-20.bg-white .grid > div:hover::after {
-  transform: scale(1.5);
-  opacity: 0.8;
-}
-
-section.py-20.bg-white .grid > div:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-section.py-20.bg-white .grid > div .step-number {
-  font-size: 4rem;
-  font-weight: 800;
-  color: var(--primary-green);
-  opacity: 0.5;
-  transition: all 0.3s ease;
-  line-height: 1;
-}
-
-section.py-20.bg-white .grid > div:hover .step-number {
-  opacity: 0.8;
-  transform: scale(1.1);
-}
-
-section.py-20.bg-white .grid > div h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2d3748;
-  margin-block-end: 1rem;
-  transition: color 0.3s ease;
-}
-
-section.py-20.bg-white .grid > div:hover h3 {
-  color: var(--primary-green);
-}
-
-section.py-20.bg-white .grid > div p {
-  font-size: 1rem;
-  color: #4a5568;
-  line-height: 1.7;
-}
-
-/* CTA Section */
-section.py-20.bg-green-600 {
-  background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-  position: relative;
-  overflow: hidden;
-}
-
-section.py-20.bg-green-600::before {
-  content: "";
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  inline-size: 100%;
-  block-size: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: 1;
-}
-
-section.py-20.bg-green-600 .container {
-  position: relative;
-  z-index: 2;
-}
-
-section.py-20.bg-green-600 h2 {
-  font-size: 2.75rem;
-  font-weight: 900;
-  margin-block-end: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-section.py-20.bg-green-600 p {
-  font-size: 1.35rem;
-  margin-block-end: 2.5rem;
-  max-inline-size: 800px;
-  margin-inline: auto;
-  line-height: 1.6;
-}
-
-section.py-20.bg-green-600 button {
-  background-color: #ffffff;
-  color: var(--primary-green);
-  padding: 1.25rem 2.5rem;
-  border-radius: 50px;
-  font-size: 1.125rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-section.py-20.bg-green-600 button::after {
-  content: "";
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
-  inline-size: 5px;
-  block-size: 5px;
-  background: rgba(56, 161, 105, 0.3);
-  opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%);
-  transform-origin: 50% 50%;
-}
-
-section.py-20.bg-green-600 button:hover::after {
-  animation: ripple 1s ease-out;
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(100, 100);
-    opacity: 0;
-  }
-}
-
-section.py-20.bg-green-600 button:hover {
-  background-color: #f0fff4;
-  color: var(--dark-green);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Footer */
-footer.bg-gray-900 {
-  background-color: #1a202c;
-  background-image: linear-gradient(rgba(26, 32, 44, 0.94), rgba(26, 32, 44, 0.94)),
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2338a169' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-  position: relative;
-  overflow: hidden;
-}
-
-footer.bg-gray-900 .container {
-  position: relative;
-  z-index: 2;
-}
-
-footer.bg-gray-900 h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-block-end: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-footer.bg-gray-900 h3::after {
-  content: "";
-  position: absolute;
-  inset-block-end: -8px;
-  inset-inline-start: 0;
-  inline-size: 40px;
-  block-size: 3px;
-  background: var(--primary-green);
-  border-radius: 2px;
-}
-
-footer.bg-gray-900 h4 {
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-block-end: 1.25rem;
-  position: relative;
-  display: inline-block;
-}
-
-footer.bg-gray-900 h4::after {
-  content: "";
-  position: absolute;
-  inset-block-end: -8px;
-  inset-inline-start: 0;
-  inline-size: 30px;
-  block-size: 2px;
-  background: var(--primary-green);
-  border-radius: 2px;
-}
-
-footer.bg-gray-900 ul {
-  list-style: none;
-  padding: 0;
-}
-
-footer.bg-gray-900 ul li {
-  margin-block-end: 0.875rem;
-}
-
-footer.bg-gray-900 ul li a {
-  color: #a0aec0;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  padding-inline-start: 0;
-}
-
-footer.bg-gray-900 ul li a::before {
-  content: "→";
-  position: absolute;
-  inset-inline-start: -20px;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-footer.bg-gray-900 ul li a:hover {
-  color: #ffffff;
-  padding-inline-start: 20px;
-}
-
-footer.bg-gray-900 ul li a:hover::before {
-  inset-inline-start: 0;
-  opacity: 1;
-}
-
-footer.bg-gray-900 .flex.space-x-4 a {
-  color: #a0aec0;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: 40px;
-  block-size: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-footer.bg-gray-900 .flex.space-x-4 a:hover {
-  color: #ffffff;
-  background-color: var(--primary-green);
-  transform: translateY(-5px);
-}
-
-footer.bg-gray-900 .border-t {
-  border-block-start: 1px solid rgba(255, 255, 255, 0.1);
-  padding-block-start: 2rem;
-  margin-block-start: 3rem;
-  text-align: center;
-  color: #a0aec0;
-}
-
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .header-container {
-    padding: 0.75rem 0;
-  }
-  
   .header-title {
     font-size: 1.75rem;
   }
   
   .logo-img {
-    block-size: 50px;
-    inline-size: 50px;
-  }
-  
-  section.relative.h-screen h1 {
-    font-size: 2.5rem;
-  }
-  
-  section.relative.h-screen p {
-    font-size: 1.125rem;
-  }
-  
-  section.py-20.bg-gray-50 h2,
-  section.py-20.bg-white h2,
-  section.py-20.bg-green-600 h2 {
-    font-size: 2rem;
-  }
-  
-  section.py-20.bg-green-600 p {
-    font-size: 1.125rem;
-  }
-  
-  .bg-gray-50 .grid,
-  section.py-20.bg-white .grid {
-    grid-template-columns: 1fr;
-  }
-  
-  section.py-20.bg-gray-50,
-  section.py-20.bg-white,
-  section.py-20.bg-green-600 {
-    padding-block-start: 3rem;
-    padding-block-end: 3rem;
+    height: 3rem;
+    width: 3rem;
   }
 }
 
-/* Animation Utilities */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Loading Animation for App */
-@keyframes pulse-green {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(56, 161, 105, 0.7);
-  }
-  
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 20px rgba(56, 161, 105, 0);
-  }
-  
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(56, 161, 105, 0);
-  }
-}
-
-/* Custom Agriculture-themed Loader */
-.loader {
-  inline-size: 80px;
-  block-size: 80px;
-  border-radius: 50%;
-  border: 6px solid var(--light-green);
-  border-block-start-color: var(--primary-green);
-  animation: spin 1.5s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Modern Button Styles */
-.modern-button {
-  padding: 1rem 2rem;
-  border-radius: 50 };
-
-
-/* Additional styles for the What is Agri Mart section */
-.bg-green-50 {
-    background-color: #f0fdf4;
-  }
-  
-  .text-green-700 {
-    color: #166534;
-  }
-  
-  /* Smooth hover transition for the cards */
-  .bg-green-50:hover {
-    transform: translateY(-5px);
-  }
-  
-  /* Animation for the icon */
-  @keyframes gentle-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-  
-  .inline-flex img {
-    animation: gentle-bounce 3s ease-in-out infinite;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-inline-size: 768px) {
-    .grid.md\:grid-cols-2 {
-      grid-template-columns: 1fr;
-    }
-    
-    .bg-green-50 {
-      margin-block-end: 1.5rem;
-    }
-  }
+/* Create a directory structure for images */
+/* Note: These are just placeholders, actual images need to be added to the project */
