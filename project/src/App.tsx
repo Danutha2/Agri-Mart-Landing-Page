@@ -384,11 +384,15 @@ function App() {
             Start connecting with farmers and buyers today. Download the app and
             transform your agricultural business.
           </p>
-          <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold inline-flex items-center gap-2 hover:bg-gray-100 transition-colors">
-            Download Now <Download size={20} />
-          </button>
+          <a href="https://appdistribution.firebase.google.com/testerapps/1:346281612226:android:b8883d6df13d59e08afc5b/releases/5e7dafga59hro?utm_source=firebase-console" target="_blank" rel="noopener noreferrer">
+            <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold inline-flex items-center gap-2 hover:bg-gray-100 transition-colors">
+              Download Now <Download size={20} />
+            </button>
+          </a>
         </div>
       </section>
+
+
 
       {/* Footer */}
       <footer id="contact" className="bg-gray-900 text-white py-12">
