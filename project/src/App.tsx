@@ -384,7 +384,7 @@ function App() {
             Start connecting with farmers and buyers today. Download the app and
             transform your agricultural business.
           </p>
-          <a href="https://appdistribution.firebase.google.com/testerapps/1:346281612226:android:b8883d6df13d59e08afc5b/releases/5e7dafga59hro?utm_source=firebase-console" target="_blank" rel="noopener noreferrer">
+          <a href="https://firebaseappdistribution.googleapis.com/app-binary-downloads/projects/346281612226/apps/1:346281612226:android:b8883d6df13d59e08afc5b/releases/5e7dafga59hro/binaries/261637ba8c377050408e19ca410cb96e907e11b6f14ff320c8ed56304f8f3b65/app.apk?utm_source=firebase-console&token=AFb1MRwAAAAAZ-Y1snztrt8OuqD9QIIcRAmyBRoF5SuTVdWHh0vbxrIHjWPYRgPrc23IZCWQrPonCHdRxLGGIvnGg7NuWtG6YYZRSjkDzO5Yb87BAIWmlr42P2z9R9Gkl2envNjdcVPbftpEkiZdC5C1Iy23cLQzcOw2bWqI0K0N1SLTQCDqA_M5Bt75MDcdk3nuXJuEsPyTgu-2x3sZcafc1y6AxvdPnQPIhNUlTQ294_ompf1ZsLDV3ZrVX9YIdsftdyteK01qfYEIJFClWQ2ntmsADkUr5BbdyhbfQOAsXVg3K9wz4aOt-bOKRnaVFr0qft-5TfyMq6kdmS5niVbUSblHGiVHjslq5R8">
             <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold inline-flex items-center gap-2 hover:bg-gray-100 transition-colors">
               Download Now <Download size={20} />
             </button>
