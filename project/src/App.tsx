@@ -69,12 +69,7 @@ function App() {
               <a href="#contact" className={`nav-link ${isScrolled ? 'text-gray-700 hover:text-green-700' : 'text-white hover:text-green-200'} text-2xl px-4 py-2`}>Contact</a>
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:block">
-              <button className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">
-                Get Started
-              </button>
-            </div>
+
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
@@ -111,9 +106,6 @@ function App() {
               <Phone size={18} />
               <span>Contact</span>
             </a>
-            <button className="w-full bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">
-              Get Started
-            </button>
           </div>
         </div>
       </nav>
@@ -148,9 +140,7 @@ function App() {
             Your Trusted Marketplace for Fresh Produce. Connecting farmers with
             reliable buyers, ensuring fair pricing and continuous supply.
           </p>
-          <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold flex items-center gap-2 transition-colors">
-            Get Started <ChevronRight size={20} />
-          </button>
+        
         </div>
       </section>
 
@@ -367,9 +357,7 @@ function App() {
           </div>
           
           <div className="text-center mt-16">
-            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg text-lg font-medium inline-flex items-center gap-2 transition-colors">
-              Join Our Team <ChevronRight size={20} />
-            </button>
+    
           </div>
         </div>
       </section>
@@ -538,3 +526,5 @@ const TeamMember = ({ name, role, image, bio, socialLinks }) => (
 );
 
 export default App;
+
+
